@@ -22,5 +22,5 @@ Route::get('/', function () {
 });
 
 Route::resource('register', RegisterController::class)->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'index', 'create', 'store','storeAjax', 'show', 'edit', 'update', 'destroy'
 ]);

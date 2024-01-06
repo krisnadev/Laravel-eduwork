@@ -27,9 +27,9 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->name);
     }
-
+    
     /**
      * Display the specified resource.
      */
