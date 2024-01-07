@@ -38,6 +38,7 @@
                                     class="form-control"
                                     id="name"
                                     name="name"
+                                    value="{{ old('name',optional($posts ?? null)->name) }}"
                                     placeholder="Input your name"
                                 />
                             </div>
@@ -51,6 +52,8 @@
                                     type="email"
                                     class="form-control"
                                     id="exampleInputEmail1"
+                                    name="email"
+                                    value="{{ old('email',optional($posts ?? null)->email) }}"
                                     placeholder="Input your Email"
                                 />
                             </div>
@@ -64,6 +67,7 @@
                                     type="password"
                                     class="form-control"
                                     id="exampleInputPassword1"
+                                    name="password"
                                     placeholder="Input your password"
                                 />
                             </div>
@@ -72,6 +76,15 @@
                             </button>
                         </form>
                     </div>
+                    @if ($errors->any())
+                    <div class="card-footer">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
