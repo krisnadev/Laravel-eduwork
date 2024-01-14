@@ -20,23 +20,23 @@
                     Form Register
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('register.update', $user->id) }}">
                         @csrf
-                        <div>
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" required autofocus>
+                        @method('PUT') 
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}" placeholder="Input your name" />
                         </div>
-                        <div>
-                            <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="{{ old('email', $user->email) }}" placeholder="Input your Email" />
                         </div>
-                        <div>
-                            <button class="btn btn-info" type="submit">Login</button>
-                        </div>
-
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-info">Kembali</a>
                     </form>
                 </div>
-
+                
                 @if ($errors->any())
                 <div class="card-footer">
                     <ul>
@@ -45,7 +45,7 @@
                         @endforeach
                     </ul>
                 </div>
-                @endif
+                @endif                
             </div>
         </div>
     </div>

@@ -13,7 +13,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('register');
+        $users = User::all();
+        return view('register-index', ['users' => $users]);
     }
 
     /**
@@ -21,7 +22,7 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        //
+        return view('register');
     }
 
     /**
@@ -42,7 +43,8 @@ class RegisterController extends Controller
         $post->password = Hash::make($request->input('password'));
         $post->save();
 
-        return redirect()->route('register.index');
+        return redirect()->route('register.index')
+            ->with('success', 'Sukses Menambahkan User');
     }
 
     /**
@@ -50,7 +52,6 @@ class RegisterController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -58,7 +59,12 @@ class RegisterController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        if ($user) {
+            return view('register-edit', compact('user'));
+        } else {
+            return redirect()->route('register.index')->with('error', 'User tidak ditemukan.');
+        }
     }
 
     /**
@@ -66,7 +72,23 @@ class RegisterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user = User::find($id);
+
+        if ($user) {
+            $user->name = $request->name;
+            $user->email = $request->email;
+
+            $user->save();
+            return redirect()->route('register.index')->with('success', 'Ubah berhasil.');
+        } else {
+            return redirect()->route('register.index')->with('error', 'User tidak ditemukan.');
+        }
     }
 
     /**
@@ -74,6 +96,12 @@ class RegisterController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('register.index')->with('success', 'Hapus berhasil.');
+        } else {
+            return redirect()->route('register.index')->with('error', 'User tidak ditemukan.');
+        }
     }
 }
