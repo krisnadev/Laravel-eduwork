@@ -23,11 +23,11 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div>
-                            <label for="email">Email</label>
+                            <label >Email</label>
                             <input type="email" name="email" class="form-control" required autofocus>
                         </div>
                         <div>
-                            <label for="password">Password</label>
+                            <label >Password</label>
                             <input type="password" name="password" class="form-control" required>
                         </div>
                         <br>

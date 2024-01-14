@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        Log::info('Informasi log');
+        Log::error('Error log');
+        Log::channel('custom')->info('This is a custom log message!');
         return view('login');
     }
 
