@@ -17,7 +17,7 @@
         <div class="col-md-6 mx-auto">
             <div class="card">
                 <div class="card-header text-white bg-primary">
-                    Form Register
+                    Login Form
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -30,6 +30,7 @@
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" required>
                         </div>
+                        <br>
                         <div>
                             <button class="btn btn-info" type="submit">Login</button>
                         </div>

@@ -17,7 +17,7 @@
         <div class="col-md-6 mx-auto">
             <div class="card">
                 <div class="card-header text-white bg-primary">
-                    Form Register
+                    Form Edit Register
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register.update', $user->id) }}">
