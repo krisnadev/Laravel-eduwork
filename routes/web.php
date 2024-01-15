@@ -28,4 +28,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::resource('register', RegisterController::class)->only([
     'index', 'create', 'store','storeAjax', 'show', 'edit', 'update', 'destroy'
-])->middleware('auth');
+]);

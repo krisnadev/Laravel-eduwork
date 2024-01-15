@@ -20,7 +20,7 @@
                     Login Form
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="http://127.0.0.1:8000/api/auth">
                         @csrf
                         <div>
                             <label >Email</label>
