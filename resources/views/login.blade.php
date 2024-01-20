@@ -20,7 +20,7 @@
                     Login Form
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('auth') }}">
                         @csrf
                         <div>
                             <label for="email">Email</label>
